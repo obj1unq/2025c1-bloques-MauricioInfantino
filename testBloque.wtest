@@ -8,6 +8,33 @@ describe "pepita volar" {
     assert.throwsException({pepita.volar(1000)})
   }
 
+  test "Rutina 1"{
+    roque.rutina({
+      pepita.volar(5)
+      pepita.comer(alpiste)})
+    roque.entrenar()
+    assert.equals(105, pepita.energia())
+  }
+
+  test "Rutina 2"{
+    roque.rutina({
+      pepita.volar(5)
+      pepita.comer(alpiste)
+      pepita.volar(5)})
+    roque.entrenar()
+    assert.equals(90, pepita.energia())
+  }
+
+  test "Rutina 3"{
+    roque.rutina({
+      pepita.comer(alpiste)
+      pepita.volar(1000)
+      pepita.comer(alpiste)
+      })
+    assert.throwsException({roque.entrenar()})
+    assert.equals(120, pepita.energia())
+  }
+
   test "mi asserter" {
     //Espero que mi asserter diga que está mal que pepita.volar(10) lanza error (ya que no lo lanza)
     assert.notThat( miAsserter.assertException( { pepita.volar(10) } ))
@@ -15,5 +42,5 @@ describe "pepita volar" {
     //Espero que mi asserter diga que está bien que pepita.volar(100) lanza error
     assert.that( miAsserter.assertException( { pepita.volar(1000) } ))
   }
-
+  
 }
